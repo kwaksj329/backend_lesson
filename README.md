@@ -33,7 +33,7 @@ A) NO
 
 * GET이라는 메소드는 웹 브라우저 url 창으로 정보를 전달할 때 parameter를 전달하는데 예를 들어 url?id=tommy&pass=kkk 이런식으로 전달할 수 있기 때문에 보안상 위험함 (할 수는 있지만 바람직하지 않음), 따라서 보통 POST 메소드 사용  
 
-```JavaScript
+```js
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
@@ -41,7 +41,7 @@ app.get('/', (req, res) => {
 
 * 내가 만든 웹 페이지의 path가 정해지지 않고 사이트 이름만 GET 메소드로 루트를 접근하는 request가 있었다 하면 그 request에 대해서는 response로 헬로 월드를 실행하는 코드  
 
-```JavaScript
+```js
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
@@ -50,7 +50,7 @@ app.listen(port, () => {
 * listen이 있어야 서버 돌아감!!
 * node app.js 로 실행시키고 있어야 http://localhost:3000/ 로 확인 가능
 
-```JavaScript
+```js
 // In zsh, u should try curl "http://localhost:{port}/user?id={ur-id}"
 app.get('/user', (req, res) => {
   res.send(`User id is ${req.query.id}`);
