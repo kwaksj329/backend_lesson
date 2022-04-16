@@ -14,5 +14,13 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kwaksj329/backend_lesson.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kwaksj329/backend_lesson/issues"
+  },
+  "homepage": "https://github.com/kwaksj329/backend_lesson#readme"
 }
