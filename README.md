@@ -48,5 +48,16 @@ app.listen(port, () => {
 ```
 
 * listen이 있어야 서버 돌아감!!
-* node app.js 로 실행시키고 있어야 http://localhost:3000/로 확인 가능
+* node app.js 로 실행시키고 있어야 http://localhost:3000/ 로 확인 가능
 
+```java
+// In zsh, u should try curl "http://localhost:{port}/user?id={ur-id}"
+app.get('/user', (req, res) => {
+  res.send(`User id is ${req.query.id}`);
+})
+```
+
+* http://localhost:3000/user?id=kwaksj329 가 아니라 http://localhost:3000/user?key=kwaksj329 이런식으로 접근하면 User id is undefined 가 출력된다.
+    * id는 있지만 query parameter로 key는 없음!
+
+    
