@@ -41,6 +41,8 @@ app.get('/', (req, res) => {
 
 * 내가 만든 웹 페이지의 path가 정해지지 않고 사이트 이름만 GET 메소드로 루트를 접근하는 request가 있었다 하면 그 request에 대해서는 response로 헬로 월드를 실행하는 코드  
 
+---
+
 ```js
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
@@ -49,6 +51,8 @@ app.listen(port, () => {
 
 * listen이 있어야 서버 돌아감!!
 * node app.js 로 실행시키고 있어야 http://localhost:3000/ 로 확인 가능
+
+---
 
 ```js
 // In zsh, u should try curl "http://localhost:{port}/user?id={ur-id}"
@@ -60,6 +64,8 @@ app.get('/user', (req, res) => {
 * http://localhost:3000/user?id=kwaksj329 가 아니라 http://localhost:3000/user?key=kwaksj329 이런식으로 접근하면 User id is undefined 가 출력된다.
     * id는 있지만 query parameter로 key는 없음!
 
+---
+
 * 웹 브라우저에서는 POST 메소드 실험 불가 - curl command 사용 또는 POSTMAN 사용
 
 ```bash
@@ -69,6 +75,8 @@ curl -X POST localhost:3000/user -d '{"id" : "jyc", "name" : "Jae Young"}' -H "C
 * 여기서 -d는 data, {} 안에는 key와 value, -H는 헤더 (컨텐트 데이터 타입 꼭 지정해줘야함)  
 
 * POST /user 200 4.116ms - 31 = POST 메소드로 왔고, url은 /user 이며 response에 대한 status code는 200으로 success이다 걸린 시간은 4.116ms
+
+---
 
 * 옛날 웹 프로그래밍 방식) 어떤 요청이 왔을 때 HTML 파일 다시 보내줬었음
 
@@ -89,3 +97,25 @@ app.get('/musicSearch/:term', async (req, res) => {
 * path param으로 term을 받고 json 객체를 만들어서 term과 entity 설정
 
 * axios 모듈에다가 get이라는 HTTP 메소드로 parameter와 url로 요청 -> await (요청 완료까지 기다림) -> 결과 나오면 그 response 저장 -> response에 있는 data 뿌려줌
+
+---
+
+* index.html에 포함된 react.js 로 만든 프로그램에서 웹서버에서 어떤 요청이 있을 땐 fetch 로 요청
+
+```js
+fetch('/musicSearch/').then((r)=> r.json()).then((d) => {console.log(d.data)})
+```
+
+* 호출해서 받아온거를 json으로 바꾸고 그것에 대해 어떤 일을 할것인지 정함
+
+---
+
+### 배운 내용 정리
+
+1. 루트 -> index.html 보여줌
+2. GET 메소드 -> path parameter
+3. GET 메소드 -> query parameter
+4. POST 메소드 -> massege body가 들어왔을 때 처리
+5. json 데이터 보내는 방법
+6. 다른 사이트에 접속해서 response 받아서 그 데이터를 json으로 보내는 방법
+

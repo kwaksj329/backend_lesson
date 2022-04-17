@@ -9,10 +9,11 @@ const port = 3000;
 app.use(express.json());
 app.use(express.urlencoded({'extended' : true}));
 app.use(logger('dev'));
+app.use(express.static('public'));   // html, image 등 정적파일 제공 폴더 지정
 
 //app 자체 = 백엔드 서버
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.sendFile('index.html')
 });
 
 // 1) path parameter 방식, user/ 다음에 바로 유저의 id 들어옴
@@ -44,7 +45,7 @@ app.get('/musicSearch/:term', async (req, res) => {
     term : req.params.term,
     entity : "album",
   }
-  var response = await axios.get('https://itunes.apple.com/search', {params : params});
+  var response = await axios.get('https://itunes.apple.com/search', {params : params}).catch(e => console.log(e));
   console.log(response.data);
   res.json(response.data);
 });
