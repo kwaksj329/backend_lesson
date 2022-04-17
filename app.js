@@ -3,6 +3,8 @@ var express = require('express');
 const logger = require('morgan');
 const axios = require('axios');
 const list = require('./data');
+const firebase = require('./firebase');
+
 var app = express();
 const port = 3000;
 
@@ -37,6 +39,21 @@ app.post('/user', (req, res) => {
 app.get('/music_list', (req,res) => {
   res.json(list);
 });
+
+app.get('/likes', async (req, res) => {
+  var db = firebase.firestore();
+  const snapshot = await db.collection('like').get().catch(e => console.log(e));
+  if (snapshot.empty){
+    console.log("No result");
+    res.json([]);
+    return;
+  }else{
+    snapshot.forEach(doc => {
+      console.log(doc.id, '=>', doc.data());
+    })
+  res.json([]);
+  }
+})
 
 // curl localhost:3000/musicSearch/blackpink
 // 비동기 함수, async 꼭 들어가야함, (npm install --save axios)
