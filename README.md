@@ -119,3 +119,8 @@ fetch('/musicSearch/').then((r)=> r.json()).then((d) => {console.log(d.data)})
 5. json 데이터 보내는 방법
 6. 다른 사이트에 접속해서 response 받아서 그 데이터를 json으로 보내는 방법
 
+* front 웹에서 바로 firebase 접속하는 것이 아닌 front 웹에서 일어난 일이 서버에 전달이 되고 그 웹 서버에서 firebase에 접속해서 변화를 주게끔 변경
+  * WHY? firebase라는 모듈을 자바스크립트에 포함시키면 사이즈가 매우 크고 무겁고 network bandwidth에 영향을 주기도 하기 때문  
+  * firebase api key와 같은 정보들이 프론트에 있으면 보안상 좋지 않음
+
+  
