@@ -74,3 +74,18 @@ curl -X POST localhost:3000/user -d '{"id" : "jyc", "name" : "Jae Young"}' -H "C
 
 * 요즘은 웹서버에서 데이터만 받는 형식으로 변함 (데이터를 던져주는 효과적인 방법은 json 데이터 보내주기, res.json())
 
+```js
+app.get('/musicSearch/:term', async (req, res) => {
+  const params = {
+    term : req.params.term,
+    entity : "album",
+  }
+  var response = await axios.get('https://itunes.apple.com/search', {params : params});
+  console.log(response.data);
+  res.json(response.data);
+});
+```
+
+* path param으로 term을 받고 json 객체를 만들어서 term과 entity 설정
+
+* axios 모듈에다가 get이라는 HTTP 메소드로 parameter와 url로 요청 -> await (요청 완료까지 기다림) -> 결과 나오면 그 response 저장 -> response에 있는 data 뿌려줌

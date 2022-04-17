@@ -13,6 +13,7 @@
   "author": "jyc",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.26.1",
     "express": "^4.17.1",
     "morgan": "^1.10.0"
   },
