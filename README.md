@@ -1,4 +1,4 @@
-# backend_practice
+# backend_lesson
 
 ## HTTP Protocol
 
@@ -59,4 +59,18 @@ app.get('/user', (req, res) => {
 
 * http://localhost:3000/user?id=kwaksj329 가 아니라 http://localhost:3000/user?key=kwaksj329 이런식으로 접근하면 User id is undefined 가 출력된다.
     * id는 있지만 query parameter로 key는 없음!
+
+* 웹 브라우저에서는 POST 메소드 실험 불가 - curl command 사용 또는 POSTMAN 사용
+
+```bash
+curl -X POST localhost:3000/user -d '{"id" : "jyc", "name" : "Jae Young"}' -H "Content-Type: application/json"
+```
+
+* 여기서 -d는 data, {} 안에는 key와 value, -H는 헤더 (컨텐트 데이터 타입 꼭 지정해줘야함)  
+
+* POST /user 200 4.116ms - 31 = POST 메소드로 왔고, url은 /user 이며 response에 대한 status code는 200으로 success이다 걸린 시간은 4.116ms
+
+* 옛날 웹 프로그래밍 방식) 어떤 요청이 왔을 때 HTML 파일 다시 보내줬었음
+
+* 요즘은 웹서버에서 데이터만 받는 형식으로 변함 (데이터를 던져주는 효과적인 방법은 json 데이터 보내주기, res.json())
 
