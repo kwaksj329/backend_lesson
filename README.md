@@ -123,4 +123,17 @@ fetch('/musicSearch/').then((r)=> r.json()).then((d) => {console.log(d.data)})
   * WHY? firebase라는 모듈을 자바스크립트에 포함시키면 사이즈가 매우 크고 무겁고 network bandwidth에 영향을 주기도 하기 때문  
   * firebase api key와 같은 정보들이 프론트에 있으면 보안상 좋지 않음
 
-  
+---
+
+### 과제
+
+* 프론트에서 좋아요 누르면 서버를 통해 firebase 접속해서 좋아요가 반영이 되도록함
+  * 제출 시 firebase key 파일들 포함되어야 실행 확인 가능
+
+```js
+app.get('/likes/:id', async (req, res) => {
+  /* 목록에 있으면 삭제, 
+  목록에 없으면, 추가
+  프론트앱은 고치지 않아도 됨*/
+})
+```
